@@ -61,7 +61,7 @@
 
         // 4. Membuat Wadah Gambar & Link
         const link = document.createElement('a');
-        link.href = '/promotion'; 
+        link.href = '/promotions'; 
         Object.assign(link.style, {
             display: 'block',
             position: 'relative', 
