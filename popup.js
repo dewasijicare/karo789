@@ -111,13 +111,13 @@
         const btnOk = document.createElement('button');
         btnOk.innerText = 'OK, SAYA MENGERTI';
         Object.assign(btnOk.style, {
-            backgroundColor: '#3b82f6', color: '#ffffff', border: 'none', // Diubah menjadi Biru
+            backgroundColor: '#ef4444', color: '#ffffff', border: 'none', // Diubah menjadi Merah
             padding: '12px', borderRadius: '6px', fontSize: '16px', 
             fontWeight: 'bold', cursor: 'pointer', letterSpacing: '1px'
         });
         
-        btnOk.onmouseover = function() { this.style.backgroundColor = '#2563eb'; } // Biru lebih gelap saat disentuh/dihover
-        btnOk.onmouseout = function() { this.style.backgroundColor = '#3b82f6'; }  // Kembali ke biru semula
+        btnOk.onmouseover = function() { this.style.backgroundColor = '#dc2626'; } // Merah lebih gelap saat kursor mendekat
+        btnOk.onmouseout = function() { this.style.backgroundColor = '#ef4444'; }  // Kembali ke merah semula
         
         footer.appendChild(btnOk);
 
