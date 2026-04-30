@@ -61,7 +61,7 @@
 
         // 4. Membuat Wadah Gambar & Link
         const link = document.createElement('a');
-        link.href = '/promotion/detail/2026/event-mahjong-ways-1-2'; 
+        link.href = '/promotion'; 
         Object.assign(link.style, {
             display: 'block',
             position: 'relative', 
