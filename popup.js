@@ -1,9 +1,12 @@
 <script type="text/javascript">
 (function() {
-    // --- FITUR KHUSUS HOMEPAGE ---
+    // --- FITUR KHUSUS HOMEPAGE / INDEX ---
     const currentPath = window.location.pathname;
-    if (currentPath !== "/" && currentPath !== "/index.html") {
-        return; 
+    
+    // Mengecek apakah halaman saat ini adalah halaman index
+    // Kamu bisa menambahkan nama file atau path lain di sini jika diperlukan
+    if (currentPath !== "/" && currentPath !== "/index.html" && currentPath !== "/index.php") {
+        return; // Jika bukan halaman index, hentikan script di sini
     }
 
     setTimeout(function() {
@@ -24,7 +27,6 @@
                     opacity: 0.9; 
                 }
                 100% { 
-                    /* Bergerak ke atas sejauh 400px (melewati tinggi gambar) */
                     transform: translateY(-400px) translateX(-25px) scale(0.5); 
                     opacity: 0; 
                 }
@@ -35,7 +37,7 @@
                 border-radius: 50%;
                 pointer-events: none; 
                 box-shadow: 0 0 8px #ffd700, 0 0 15px #ffaa00;
-                z-index: 5; /* Memastikan debu ada di atas gambar */
+                z-index: 5; 
             }
         `;
         document.head.appendChild(style);
@@ -55,16 +57,16 @@
         Object.assign(modal.style, {
             position: 'relative', width: '90%', maxWidth: '450px',
             transform: 'scale(0.8)', transition: 'transform 0.3s ease-in-out',
-            boxShadow: '0 10px 30px rgba(0,0,0,0.8)' // Pindahkan shadow ke modal
+            boxShadow: '0 10px 30px rgba(0,0,0,0.8)' 
         });
 
-        // 4. Membuat Wadah Gambar & Link (KUNCI UTAMA ADA DI SINI)
+        // 4. Membuat Wadah Gambar & Link
         const link = document.createElement('a');
         link.href = '/promotion/detail/2026/event-mahjong-ways-1-2'; 
         Object.assign(link.style, {
             display: 'block',
-            position: 'relative', // Wajib agar partikel bisa diletakkan di dalamnya
-            overflow: 'hidden',   // KUNCI: Memotong debu yang keluar dari area gambar
+            position: 'relative', 
+            overflow: 'hidden',   
             borderTopLeftRadius: '12px',
             borderTopRightRadius: '12px'
         });
@@ -78,30 +80,26 @@
         });
         link.appendChild(img);
 
-        // --- SISTEM GENERATOR DEBU EMAS (HANYA DI DALAM GAMBAR) ---
-        // Membuat 30 partikel (dikurangi sedikit agar tidak menutupi teks gambar)
+        // --- SISTEM GENERATOR DEBU EMAS ---
         for (let i = 0; i < 30; i++) {
             const particle = document.createElement('div');
             particle.className = 'gold-particle-inner';
             
-            // Ukuran debu sedikit lebih kecil agar proporsional dengan gambar
             const size = Math.random() * 4 + 2; 
             
             Object.assign(particle.style, {
                 width: `${size}px`,
                 height: `${size}px`,
-                left: `${Math.random() * 100}%`, // Posisi acak menyamping
-                bottom: `-10px`, // Mulai tepat di bawah gambar
-                // Durasi animasi lebih cepat karena jarak tempuhnya lebih pendek
+                left: `${Math.random() * 100}%`, 
+                bottom: `-10px`, 
                 animation: `floatGoldInner ${Math.random() * 2.5 + 2}s linear infinite`,
                 animationDelay: `${Math.random() * 2}s`
             });
             
-            // Masukkan partikel ke dalam wadah LINK, bukan backdrop
             link.appendChild(particle);
         }
 
-        // 5. Membuat Tombol OK
+        // 5. Membuat Tombol OK (Warna Merah)
         const footer = document.createElement('div');
         Object.assign(footer.style, {
             backgroundColor: '#1b1b1b', padding: '12px',
@@ -111,13 +109,13 @@
         const btnOk = document.createElement('button');
         btnOk.innerText = 'OK, SAYA MENGERTI';
         Object.assign(btnOk.style, {
-            backgroundColor: '#ef4444', color: '#ffffff', border: 'none', // Diubah menjadi Merah
+            backgroundColor: '#ef4444', color: '#ffffff', border: 'none', 
             padding: '12px', borderRadius: '6px', fontSize: '16px', 
             fontWeight: 'bold', cursor: 'pointer', letterSpacing: '1px'
         });
         
-        btnOk.onmouseover = function() { this.style.backgroundColor = '#dc2626'; } // Merah lebih gelap saat kursor mendekat
-        btnOk.onmouseout = function() { this.style.backgroundColor = '#ef4444'; }  // Kembali ke merah semula
+        btnOk.onmouseover = function() { this.style.backgroundColor = '#dc2626'; } 
+        btnOk.onmouseout = function() { this.style.backgroundColor = '#ef4444'; }  
         
         footer.appendChild(btnOk);
 
