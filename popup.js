@@ -1,4 +1,3 @@
-<script type="text/javascript">
 (function() {
     // --- FITUR KHUSUS HOMEPAGE / INDEX ---
     const currentPath = window.location.pathname;
@@ -152,4 +151,3 @@
 
     }, 1500); 
 })();
-</script>
