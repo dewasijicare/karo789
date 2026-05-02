@@ -1,18 +1,12 @@
 (function() {
     // Fungsi utama untuk mengubah logo
     function gantiLogoWeb() {
-        // Mencari elemen gambar logo di kiri atas berdasarkan class HTML-nya
+        // Mencari elemen gambar logo di kiri atas
         const logoImg = document.querySelector('.header-mdl__logo img');
         
         if (logoImg) {
-            // Mengganti sumber gambar (src) dengan link logo barumu
+            // HANYA mengganti sumber gambar (src), tanpa mengubah style/ukurannya sama sekali
             logoImg.src = 'https://cdn.jsdelivr.net/gh/dewasijicare/karo789@73ab9931ef42ecaaafe861e2fe38f66699ad74d3/logo_karo789.webp';
-            
-            // Sedikit penyesuaian style agar logo WebP tidak gepeng/tertarik
-            logoImg.style.maxWidth = '100%';
-            logoImg.style.height = 'auto';
-            logoImg.style.objectFit = 'contain';
-            
             return true; // Berhasil diganti
         }
         return false; // Elemen logo belum ketemu
@@ -27,7 +21,7 @@
             }
         }, 500);
 
-        // 3. Batas waktu pengecekan: berhenti mencari setelah 10 detik agar browser tetap ringan
+        // 3. Batas waktu pengecekan: berhenti mencari setelah 10 detik
         setTimeout(function() {
             clearInterval(cekLogoBerulang);
         }, 10000);
