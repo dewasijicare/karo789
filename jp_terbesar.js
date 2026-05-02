@@ -9,13 +9,13 @@
     // DATABASE GAME VIP (MENGGUNAKAN CDN ASLI WEB ANDA)
     // =========================================
     const VIP_GAMES = [
-        { name: "Mahjong Ways 2", provider: "PG SOFT", link: "/game?category=101", img: "https://fffiiillleee.com/open-img-pub/games/pgsoft/74.jpg", weight: 150 },
-        { name: "Mahjong Ways", provider: "PG SOFT", link: "/game?category=101", img: "https://fffiiillleee.com/open-img-pub/games/pgsoft/65.jpg", weight: 140 },
-        { name: "Gates of Olympus", provider: "PRAGMATIC PLAY", link: "/game?category=101", img: "https://4n76bph80j.gbgfstie.biz/game_pic/square/200/vs20olympgate.png", weight: 130 },
-        { name: "Gates of Olympus 1000", provider: "PRAGMATIC PLAY", link: "/game?category=101", img: "https://4n76bph80j.gbgfstie.biz/game_pic/square/200/vs20olympx.png", weight: 120 },
-        { name: "Starlight Princess", provider: "PRAGMATIC PLAY", link: "/game?category=101", img: "https://4n76bph80j.gbgfstie.biz/game_pic/square/200/vs20starlight.png", weight: 110 },
-        { name: "Starlight Princess 1000", provider: "PRAGMATIC PLAY", link: "/game?category=101", img: "https://4n76bph80j.gbgfstie.biz/game_pic/square/200/vs20starlightx.png", weight: 100 },
-        { name: "Sweet Bonanza", provider: "PRAGMATIC PLAY", link: "/game?category=101", img: "https://4n76bph80j.gbgfstie.biz/game_pic/square/200/vs20fruitsw.png", weight: 90 }
+        { name: "Mahjong Ways 2", provider: "PG SOFT", link: "/secure/slots-provider", img: "https://fffiiillleee.com/open-img-pub/games/pgsoft/74.jpg", weight: 150 },
+        { name: "Mahjong Ways", provider: "PG SOFT", link: "/secure/slots-provider", img: "https://fffiiillleee.com/open-img-pub/games/pgsoft/65.jpg", weight: 140 },
+        { name: "Gates of Olympus", provider: "PRAGMATIC PLAY", link: "/secure/slots-provider", img: "https://4n76bph80j.gbgfstie.biz/game_pic/square/200/vs20olympgate.png", weight: 130 },
+        { name: "Gates of Olympus 1000", provider: "PRAGMATIC PLAY", link: "/secure/slots-provider", img: "https://4n76bph80j.gbgfstie.biz/game_pic/square/200/vs20olympx.png", weight: 120 },
+        { name: "Starlight Princess", provider: "PRAGMATIC PLAY", link: "/secure/slots-provider", img: "https://4n76bph80j.gbgfstie.biz/game_pic/square/200/vs20starlight.png", weight: 110 },
+        { name: "Starlight Princess 1000", provider: "PRAGMATIC PLAY", link: "/secure/slots-provider", img: "https://4n76bph80j.gbgfstie.biz/game_pic/square/200/vs20starlightx.png", weight: 100 },
+        { name: "Sweet Bonanza", provider: "PRAGMATIC PLAY", link: "/secure/slots-provider", img: "https://4n76bph80j.gbgfstie.biz/game_pic/square/200/vs20fruitsw.png", weight: 90 }
     ];
 
     let LIVE_GAME_LIBRARY = [...VIP_GAMES]; 
@@ -71,10 +71,8 @@
                     let name = node.dataset.gamename || imgEl.alt || "Slot Game";
                     let imgUrl = imgEl.getAttribute('data-src') || imgEl.getAttribute('data-original') || imgEl.getAttribute('data-lazy') || imgEl.src;
                     
-                    let link = node.href || node.dataset.playurl || '/game?category=101';
-                    if (link.includes('javascript:') || link.endsWith('#') || link === window.location.href || link.includes('/slots')) {
-                        link = '/game?category=101'; 
-                    }
+                    // MEMAKSA LINK SELALU KE /secure/slots-provider
+                    let link = '/secure/slots-provider'; 
 
                     // --- FILTER LOGIKA ANTI-LOGO PROVIDER ---
                     let checkText = (name + " " + imgUrl).toLowerCase();
@@ -89,7 +87,7 @@
                     let existingVip = LIVE_GAME_LIBRARY.find(g => g.name.toLowerCase().trim() === name.toLowerCase().trim());
                     
                     if (existingVip) {
-                        if (link !== '/game?category=101' && !link.includes('javascript')) existingVip.link = link;
+                        existingVip.link = link;
                     } else {
                         if (!fetchedGames.find(g => g.name === name) && imgUrl && !imgUrl.startsWith('data:image/gif')) {
                             fetchedGames.push({ name, provider, img: imgUrl, link, weight: 15 });
@@ -167,7 +165,8 @@
                 gameName: game.name,
                 provider: game.provider,
                 image: game.img,
-                link: game.link, 
+                // MENGUNCI LINK KE /secure/slots-provider
+                link: '/secure/slots-provider', 
                 amount: generateJackpotAmount(),
                 user: generateUsername(),
                 date: generateDate(baseTime)
