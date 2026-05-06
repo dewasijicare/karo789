@@ -29,7 +29,7 @@
         /* Wadah untuk kedua tombol di kiri bawah */
         #custom-floating-widget {
             position: fixed;
-            bottom: 25px;
+            bottom: 85px;
             left: 25px;
             display: flex;
             flex-direction: column;
