@@ -1,11 +1,11 @@
 (function() {
     // Fungsi utama untuk mengubah logo
     function gantiLogoWeb() {
-        // Mencari elemen gambar logo di kiri atas
-        const logoImg = document.querySelector('.header-mdl__logo img');
+        // Mencari elemen gambar logo di kiri atas (Mendukung class Desktop & Mobile)
+        const logoImg = document.querySelector('.header-mdl__logo img, .nav__logo img');
         
         if (logoImg) {
-            // HANYA mengganti sumber gambar (src), tanpa mengubah style/ukurannya sama sekali
+            // Mengganti sumber gambar (src) ke logo animasi webp
             logoImg.src = 'https://cdn.jsdelivr.net/gh/dewasijicare/karo789@73ab9931ef42ecaaafe861e2fe38f66699ad74d3/logo_karo789.webp';
             return true; // Berhasil diganti
         }
